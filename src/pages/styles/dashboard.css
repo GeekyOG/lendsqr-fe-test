@@ -140,11 +140,6 @@ table tr:first-child {
   margin-top: 60px;
   border: 1px solid rgba(84, 95, 125, 0.1411764706);
 }
-@media (max-width: 1200px) {
-  .filter-container {
-    left: 40px;
-  }
-}
 .filter-container h4 {
   margin-top: 40px;
 }
