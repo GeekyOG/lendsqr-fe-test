@@ -1,0 +1,24 @@
+.container {
+  background-color: #fff;
+  width: calc((100% - 40px) / 4);
+  padding: 20px;
+  border-radius: 4px;
+}
+
+@media (max-width: 850px) {
+  .container {
+    width: calc((100% - 20px) / 2);
+  }
+}
+.container h4 {
+  font-size: 14px;
+  font-size: 400;
+  margin: 5px 0;
+  color: #545f7d;
+}
+
+.container h1 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #213f7d;
+}/*# sourceMappingURL=style.css.map */
