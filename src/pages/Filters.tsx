@@ -123,41 +123,42 @@ function Filter({ data, setData }: { data: any; setData: any }) {
                     />
                   </div>
                 </th>
-                <div className="filter-container">
-                  <h4>Organization</h4>
-
-                  <div className="select">
-                    <select>
-                      <option>select</option>
-                    </select>
-                  </div>
-
-                  <h4>Username</h4>
-                  <input placeholder="User" />
-                  <h4>Email</h4>
-                  <input placeholder="Email" />
-                  <h4>Date</h4>
-                  <input type="date" placeholder="Date" value={"Date"} />
-                  <h4>Phone number</h4>
-                  <input placeholder="Phone Number" />
-                  <h4>Status</h4>
-                  <div className="select">
-                    <select>
-                      <option>select</option>
-                    </select>
-                  </div>
-
-                  <div className="filter-buttons flex">
-                    <button className="reset-btn mr-5">Reset</button>
-                    <button className="filter-btn ">Filter</button>
-                  </div>
-                </div>
+                <th></th>
               </tr>
               {data
                 ? currentTableData.map((item: any) => {
                     return <Table item={item} />;
                   })
                 : "Loading..."}
+              <div className="filter-container">
+                <h4>Organization</h4>
+
+                <div className="select">
+                  <select>
+                    <option>select</option>
+                  </select>
+                </div>
+
+                <h4>Username</h4>
+                <input placeholder="User" />
+                <h4>Email</h4>
+                <input placeholder="Email" />
+                <h4>Date</h4>
+                <input type="date" placeholder="Date" value={"Date"} />
+                <h4>Phone number</h4>
+                <input placeholder="Phone Number" />
+                <h4>Status</h4>
+                <div className="select">
+                  <select>
+                    <option>select</option>
+                  </select>
+                </div>
+
+                <div className="filter-buttons flex">
+                  <button className="reset-btn mr-5">Reset</button>
+                  <button className="filter-btn ">Filter</button>
+                </div>
+              </div>
             </table>
           </div>
 
