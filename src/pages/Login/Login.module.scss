@@ -1,0 +1,237 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  @include m.desktop-up {
+    flex-direction: row;
+  }
+}
+
+.branding {
+  display: none;
+
+  @include m.desktop-up {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 51%;
+    padding: 40px;
+    box-shadow: 0 15px 90px 0 rgba(0, 0, 0, 0.03);
+  }
+}
+
+.logoDesktop {
+  position: absolute;
+  top: 106px;
+  left: 97px;
+  width: 174px;
+  height: auto;
+}
+
+.illustration {
+  width: 100%;
+  min-width: 600px;
+
+  height: auto;
+}
+
+.formPane {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+
+  @include m.tablet-up {
+    padding: 48px;
+  }
+
+  @include m.desktop-up {
+    flex: 1 1 49%;
+  }
+}
+
+.formWrapper {
+  width: 100%;
+  max-width: 447px;
+  padding: 32px 0;
+}
+
+.logoMobile {
+  width: 140px;
+  height: auto;
+  margin-bottom: 40px;
+
+  @include m.desktop-up {
+    display: none;
+  }
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: v.$color-navy;
+  letter-spacing: -1px;
+  margin: 0 0 8px;
+
+  @include m.tablet-up {
+    font-size: 34px;
+  }
+
+  @include m.desktop-up {
+    font-size: 40px;
+    letter-spacing: -1.6px;
+  }
+}
+
+.subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  color: v.$color-text-muted;
+  margin: 0 0 32px;
+
+  @include m.desktop-up {
+    font-size: 20px;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  width: 100%;
+  height: 50px;
+  border: 2px solid v.$color-border;
+  border-radius: 5px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-family: inherit;
+  color: v.$color-navy;
+  background-color: v.$color-white;
+
+  &::placeholder {
+    color: v.$color-text-muted;
+    opacity: 0.6;
+  }
+
+  &:focus {
+    border-color: v.$color-primary;
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &[aria-invalid="true"] {
+    border-color: v.$color-error;
+  }
+}
+
+.passwordWrapper {
+  position: relative;
+
+  .input {
+    padding-right: 72px;
+  }
+}
+
+.toggleVisibility {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  color: v.$color-primary;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.forgotPassword {
+  align-self: flex-end;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: v.$color-primary;
+  text-decoration: none;
+  margin-top: -8px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.submit {
+  height: 50px;
+  border: none;
+  border-radius: 8px;
+  background-color: v.$color-primary;
+  color: v.$color-white;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background-color 0.15s ease;
+
+  &:hover:not(:disabled) {
+    background-color: v.$color-primary-dark;
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+.formError {
+  background-color: rgba(228, 3, 59, 0.08);
+  border: 1px solid rgba(228, 3, 59, 0.24);
+  border-radius: 5px;
+  color: v.$color-error;
+  font-size: 13px;
+  padding: 12px 16px;
+  margin: 0;
+}
+
+.fieldError {
+  color: v.$color-error;
+  font-size: 12px;
+  margin: 4px 0 0;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
