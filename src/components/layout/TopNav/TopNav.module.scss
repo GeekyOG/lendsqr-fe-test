@@ -1,0 +1,191 @@
+@use "../../../styles/variables" as v;
+@use "../../../styles/mixins" as m;
+
+.topNav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 100px;
+  padding: 0 24px;
+  background-color: v.$color-white;
+  border-bottom: 1px solid rgba(33, 63, 125, 0.06);
+  font-family: v.$font-family-work-sans;
+
+  @include m.desktop-up {
+    padding: 0 40px;
+  }
+}
+
+.menuButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  flex-shrink: 0;
+
+  span {
+    display: block;
+    height: 2px;
+    background-color: v.$color-navy;
+    border-radius: 1px;
+  }
+
+  @include m.desktop-up {
+    display: none;
+  }
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 400px;
+  height: 40px;
+  border: 1px solid rgba(33, 63, 125, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+
+  input {
+    flex: 1;
+    height: 100%;
+    border: none;
+    padding: 0 16px;
+    font-size: 14px;
+    color: v.$color-text-muted;
+    min-width: 0;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.searchButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 100%;
+  border: none;
+  background-color: v.$color-primary;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.searchIcon {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid v.$color-white;
+  border-radius: 50%;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 6px;
+    background-color: v.$color-white;
+    bottom: -6px;
+    right: -3px;
+    transform: rotate(-45deg);
+  }
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.docsLink {
+  display: none;
+  color: v.$color-navy;
+  font-size: 16px;
+  text-decoration: underline;
+
+  @include m.tablet-up {
+    display: inline;
+  }
+}
+
+.iconButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+}
+
+.notificationDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: v.$color-primary;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.avatar {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: v.$color-navy;
+  color: v.$color-white;
+  font-size: 16px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.userName {
+  display: none;
+  color: v.$color-navy;
+  font-size: 16px;
+  font-weight: 500;
+
+  @include m.tablet-up {
+    display: inline;
+  }
+}
+
+.profileChevron {
+  display: none;
+  width: 10px;
+  height: 10px;
+  transform: rotate(90deg);
+
+  @include m.tablet-up {
+    display: inline-block;
+  }
+}

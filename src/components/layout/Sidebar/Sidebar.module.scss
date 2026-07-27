@@ -1,0 +1,144 @@
+@use "../../../styles/variables" as v;
+@use "../../../styles/mixins" as m;
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 283px;
+  max-width: 85vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  background-color: v.$color-white;
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+  padding-bottom: 40px;
+  font-family: v.$font-family-work-sans;
+  transform: translateX(-100%);
+  transition: transform 0.2s ease;
+
+  &.open {
+    transform: translateX(0);
+  }
+
+  @include m.desktop-up {
+    position: sticky;
+    align-self: flex-start;
+    transform: none;
+  }
+}
+
+.logo {
+  padding: 32px 30px 24px;
+
+  img {
+    width: 130px;
+    height: auto;
+  }
+}
+
+.switchOrg {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 12px 30px;
+  border: none;
+  background: none;
+  color: v.$color-navy;
+  font-family: inherit;
+  font-size: 16px;
+  cursor: default;
+  text-align: left;
+}
+
+.switchOrgChevron {
+  width: 10px;
+  height: 10px;
+  margin-left: auto;
+  transform: rotate(90deg);
+}
+
+.nav {
+  flex: 1;
+  overflow-y: auto;
+  padding-top: 20px;
+}
+
+.navList {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+}
+
+.sectionTitle {
+  margin: 24px 0 8px;
+  padding: 0 30px;
+  font-size: 12px;
+  font-weight: 500;
+  color: v.$color-text-muted;
+  text-transform: uppercase;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 30px;
+  color: v.$color-navy;
+  font-size: 16px;
+  text-decoration: none;
+  opacity: 0.6;
+  cursor: default;
+}
+
+a.navLink {
+  cursor: pointer;
+}
+
+.active {
+  opacity: 1;
+  background-color: rgba(57, 205, 204, 0.06);
+  border-left: 3px solid v.$color-primary;
+  padding-left: 27px;
+}
+
+.navIcon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.iconPlaceholder {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: v.$color-text-muted;
+  margin: 0 5px;
+}
+
+.footer {
+  padding: 16px 30px 0;
+  border-top: 1px solid rgba(33, 63, 125, 0.06);
+}
+
+.logout {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: none;
+  background: none;
+  color: v.$color-navy;
+  font-family: inherit;
+  font-size: 16px;
+  padding: 12px 0;
+  cursor: pointer;
+}
+
+.version {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: v.$color-navy;
+}

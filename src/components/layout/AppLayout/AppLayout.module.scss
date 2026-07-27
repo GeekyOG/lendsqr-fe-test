@@ -1,0 +1,46 @@
+@use "../../../styles/variables" as v;
+@use "../../../styles/mixins" as m;
+
+.layout {
+  display: flex;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow-x: hidden;
+  min-height: 100vh;
+  background-color: v.$color-background;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 15;
+  background-color: rgba(33, 63, 125, 0.4);
+  border: none;
+  padding: 0;
+
+  @include m.desktop-up {
+    display: none;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.main {
+  max-height: 100vh;
+  overflow: auto;
+  flex: 1;
+  padding: 24px 16px 100px;
+
+  @include m.tablet-up {
+    padding: 32px 24px 100px;
+  }
+
+  @include m.desktop-up {
+    padding: 32px 40px 100px;
+  }
+}

@@ -1,0 +1,95 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.pagination {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 16px 0;
+  font-family: v.$font-family-work-sans;
+  font-size: 14px;
+  color: v.$color-text-muted;
+
+  @include m.tablet-up {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.pageSize {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.select {
+  height: 30px;
+  border: none;
+  border-radius: 4px;
+  background-color: rgba(33, 63, 125, 0.1);
+  color: v.$color-navy;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0 8px;
+  cursor: pointer;
+}
+
+.pages {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.navButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 4px;
+  background-color: rgba(33, 63, 125, 0.1);
+  cursor: pointer;
+
+  img {
+    width: 8px;
+    height: 8px;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.chevronLeft {
+  transform: rotate(180deg);
+}
+
+.pageButton {
+  min-width: 24px;
+  height: 24px;
+  padding: 0 4px;
+  border: none;
+  background: none;
+  color: v.$color-text-muted;
+  opacity: 0.6;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+
+  &.active {
+    color: v.$color-text-muted;
+    opacity: 1;
+  }
+}
+
+.ellipsis {
+  color: v.$color-text-muted;
+  opacity: 0.6;
+}
