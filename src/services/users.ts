@@ -61,7 +61,7 @@ function matchesFilters(user: User, filters?: UsersFilters): boolean {
   if (filters.status && user.status !== filters.status) {
     return false;
   }
-  if (filters.date && !user.dateJoined.startsWith(filters.date)) {
+  if (filters.date && !user.createdAt.startsWith(filters.date)) {
     return false;
   }
 
