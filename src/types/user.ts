@@ -13,7 +13,7 @@ export interface User {
   username: string;
   email: string;
   phoneNumber: string;
-  dateJoined: string;
+  createdAt: string;
   status: UserStatus;
   tier: 1 | 2 | 3;
   accountBalance: number;

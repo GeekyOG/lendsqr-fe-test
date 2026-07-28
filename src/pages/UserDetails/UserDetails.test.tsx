@@ -22,7 +22,7 @@ function buildUser(overrides: Partial<User> = {}): User {
     username: "Adedeji",
     email: "adedeji@lendsqr.com",
     phoneNumber: "08078903721",
-    dateJoined: "2020-05-15T10:00:00.000Z",
+    createdAt: "2020-05-15T10:00:00.000Z",
     status: "inactive",
     tier: 2,
     accountBalance: 200000,

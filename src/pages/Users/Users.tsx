@@ -24,9 +24,6 @@ function formatDate(iso: string): string {
     month: "short",
     day: "2-digit",
     year: "numeric",
-    hour: "numeric",
-    minute: "2-digit",
-    hour12: true,
   });
 }
 
@@ -265,7 +262,7 @@ export default function Users() {
                     <td>{user.username}</td>
                     <td>{user.email}</td>
                     <td>{user.phoneNumber}</td>
-                    <td>{formatDate(user.dateJoined)}</td>
+                    <td>{formatDate(user.createdAt)}</td>
                     <td>
                       <StatusPill status={user.status} />
                     </td>
