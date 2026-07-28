@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent, type MouseEvent as ReactMouseEvent } from "react";
 import { createPortal } from "react-dom";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import StatCard from "@/components/StatCard/StatCard";
 import StatusPill from "@/components/StatusPill/StatusPill";
 import Pagination from "@/components/Pagination/Pagination";
@@ -29,6 +29,7 @@ function formatDate(iso: string): string {
 
 export default function Users() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   const [stats, setStats] = useState<Awaited<ReturnType<typeof getUserStats>> | null>(null);
   const [organizations, setOrganizations] = useState<string[]>([]);
@@ -54,6 +55,12 @@ export default function Users() {
     getUserStats().then(setStats);
     getOrganizations().then(setOrganizations);
   }, []);
+
+  useEffect(() => {
+    const search = searchParams.get("search") ?? "";
+    setFilters((current) => ({ ...current, search: search || undefined }));
+    setPage(1);
+  }, [searchParams]);
 
   useEffect(() => {
     if (!isFilterOpen && !openMenuId) {
@@ -113,6 +120,7 @@ export default function Users() {
     if (filterForm.phoneNumber) cleaned.phoneNumber = filterForm.phoneNumber;
     if (filterForm.date) cleaned.date = filterForm.date;
     if (filterForm.status) cleaned.status = filterForm.status;
+    if (filters.search) cleaned.search = filters.search;
 
     setFilters(cleaned);
     setPage(1);
@@ -121,7 +129,7 @@ export default function Users() {
 
   function handleFilterReset() {
     setFilterForm(EMPTY_FILTER_FORM);
-    setFilters({});
+    setFilters((current) => (current.search ? { search: current.search } : {}));
     setPage(1);
     setFilterOpen(false);
   }

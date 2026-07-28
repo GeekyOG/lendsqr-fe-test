@@ -13,6 +13,17 @@ function loadUsers(): Promise<User[]> {
         }
         return response.json() as Promise<User[]>;
       })
+      .then((users) =>
+        users.map((user) => ({
+          ...user,
+          phoneNumber: String(user.phoneNumber),
+          accountNumber: String(user.accountNumber),
+          guarantors: user.guarantors.map((guarantor) => ({
+            ...guarantor,
+            phoneNumber: String(guarantor.phoneNumber),
+          })),
+        })),
+      )
       .catch((error: unknown) => {
         usersPromise = null;
         throw error;
@@ -28,6 +39,7 @@ export interface UsersFilters {
   phoneNumber?: string;
   date?: string;
   status?: UserStatus;
+  search?: string;
 }
 
 export interface FetchUsersParams {
@@ -63,6 +75,20 @@ function matchesFilters(user: User, filters?: UsersFilters): boolean {
   }
   if (filters.date && !user.createdAt.startsWith(filters.date)) {
     return false;
+  }
+
+  if (filters.search) {
+    const term = filters.search.trim();
+    const lowerTerm = term.toLowerCase();
+    const matches =
+      user.organization.toLowerCase().includes(lowerTerm) ||
+      user.username.toLowerCase().includes(lowerTerm) ||
+      user.email.toLowerCase().includes(lowerTerm) ||
+      user.phoneNumber.includes(term);
+
+    if (!matches) {
+      return false;
+    }
   }
 
   return true;
